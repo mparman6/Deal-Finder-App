@@ -1,1 +1,8 @@
-//css page//
+
+
+#locationArrow {
+ height: auto;
+ width: auto;
+ max-height: 15px;
+ max-width: 15px;
+}
