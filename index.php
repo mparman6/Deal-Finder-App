@@ -1,1 +1,1 @@
-<?php require('deal1.html'); ?>
+<?php require 'deal1.html' ;?>
