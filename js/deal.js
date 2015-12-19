@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-
+  var $deals = $("#deals");
  var sqootAPIdeals = "http://api.sqoot.com/v2/deals?api_key=fflt53&callback=?";
  var sqootAPIcoupons = "http://api.sqoot.com/v2/coupons?api_key=fflt53&callback=?";
 
@@ -10,6 +10,9 @@ $(document).ready(function(){
   data: 'format=json&id=123',
   success:function(feed) {
    console.log(feed);
+   $.each(deals, function (i, deal) {
+    $deals.append("<li>Deal 1</li>");
+   });
   },
   dataType: 'jsonp'
  }); 
@@ -20,6 +23,9 @@ $(document).ready(function(){
   data: 'format=json&id=123',
   success:function(feed) {
    console.log(feed);
+   $.each(deals, function (i, deal) {
+    $deals.append("<li>Coupon 1</li>");
+   });
   },
   dataType: 'jsonp'
  });
