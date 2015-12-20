@@ -14,9 +14,7 @@ $("#locationBtn").on("click", function() {
   type:'GET',
   url: sqootAPIdeals,
   data: 'format=json&id=123',
-  success:function(feed) {
-   console.log(feed);
-  },
+  success:,
   dataType: 'jsonp'
  }); 
 
@@ -30,7 +28,23 @@ $("#locationBtn").on("click", function() {
   dataType: 'jsonp'
  });
 
+ buildDealsRow();
+
 });
 
+function buildDealsRow (query) {
+ var colDiv = $("<div>").addClass("col-md-4");
+ var thumbnailDiv = $("<div>").addClass("thumbnail");
+ var captionDiv = $("<div>").addClass("caption");
+ var thumbTitle = $("<p>").append(deals.deal.title);
+
+ colDiv.append(thumbnailDiv.append(captionDiv.append(thumbTitle)));
+
+ return colDiv;
+}
+
+function buildCouponsRow () {
+
+}
 
 });
