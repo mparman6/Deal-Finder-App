@@ -38,7 +38,9 @@ function buildDealsRow (query) {
  var captionDiv = $("<div>").addClass("caption");
  var thumbTitle = $("<p>").append(deals.deal.title);
 
- colDiv.append(thumbnailDiv.append(captionDiv.append(thumbTitle)));
+ colDiv.append(thumbnailDiv.
+  append(captionDiv.
+    append(thumbTitle)));
 
  return colDiv;
 }
