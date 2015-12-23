@@ -38,6 +38,12 @@ $(document).ready(function() {
 
 
     function buildDealThumbnail() {
+
+        var deal_address = query.location.address;
+        var deal_state = query.location.region;
+        var deal_title = deals.deal.title;
+        var short_title = deals.deal.short_title;
+
       var colDealDiv = $("<div>").addClass("col-md-4");
       var thumbnailDealDiv = $("<div>").addClass("thumbnail");
       var captionDiv = $("<div>").addClass("caption");
@@ -60,7 +66,7 @@ $(document).ready(function() {
       function sqootCouponSuccessHandler(response) {
         var sqootCouponAPIParams = {
           format: json,
-          coupon_address: query.location.address,
+           coupon_address: query.location.address,
           coupon_state: query.location.region,
           coupon_title: coupons.coupon.title,
         }
@@ -81,6 +87,10 @@ $(document).ready(function() {
       }
 
       function buildCouponThumbnail () {
+          var coupon_address = query.location.address;
+           var coupon_state = query.location.region;
+           var coupon_title = coupons.coupon.title;
+
         var colCouponDiv = $("<div>").addClass("col-md-4");
         var thumbnailCouponDiv = $("<div>").addClass("thumbnail");
         var captionDiv = $("<div>").addClass("caption");
