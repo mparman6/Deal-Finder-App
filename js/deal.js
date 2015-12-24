@@ -4,45 +4,34 @@ $(document).ready(function() {
 
     e.preventDefault();
     
-    var userZipcode = $("#userZipcode").val().trim();
-    
-    var sqootAPIdeals = "http://api.sqoot.com/v2/deals?api_key=fflt53&callback=?";
-    var sqootAPIcoupons = "http://api.sqoot.com/v2/coupons?api_key=fflt53&callback=query";
+    var sqootAPIdeals = "http://api.sqoot.com/v2/deals?api_key=fflt53&callback=";
+    var sqootAPIcoupons = "http://api.sqoot.com/v2/coupons?api_key=fflt53&callback=";
 
 
-    function sqootDealSuccessHandler(response) {
-      var sqootDealAPIParams = {
-        format: json,
-        deal_address: query.location.address,
-        deal_state: query.location.region,
-        deal_title: deals.deal.title,
-        short_title: deals.deal.short_title,
-      }
+    function sqootDealSuccessHandler() {
+
 
       $.ajax ({
         type:'GET',
         url: sqootAPIdeals,
-        data: 'format=json&id=123',
+        data: { 
+        deal_address: sqootAPIdeals + query.location.address,
+        deal_state: sqootAPIdeals + query.location.region,
+        deal_title: sqootAPIdeals + deals.deal.title,
+        short_title: sqootAPIdeals + deals.deal.short_title},
         success: sqootDealSuccessHandler,
         dataType: 'json'
       });
 
-      var dealAmount = jquery.id;
-      for (var i=0; i<dealAmount.length; i++) {
-        var newCol = buildDealThumbnail(dealAmount[i]);
-        $("#dealsRow").append(dealCol);
-      }
+
     }
+    
+    buildDealThumbnail()
 
   })
 
 
     function buildDealThumbnail() {
-
-        var deal_address = query.location.address;
-        var deal_state = query.location.region;
-        var deal_title = deals.deal.title;
-        var short_title = deals.deal.short_title;
 
       var colDealDiv = $("<div>").addClass("col-md-4");
       var thumbnailDealDiv = $("<div>").addClass("thumbnail");
@@ -63,33 +52,25 @@ $(document).ready(function() {
 
 
 
-      function sqootCouponSuccessHandler(response) {
-        var sqootCouponAPIParams = {
-          format: json,
-           coupon_address: query.location.address,
-          coupon_state: query.location.region,
-          coupon_title: coupons.coupon.title,
-        }
+      function sqootCouponSuccessHandler() {
 
         $.ajax ({
           type:'GET',
           url: sqootAPIcoupons,
-          data: 'format=json&id=123',
+          data: { 
+          coupon_address: sqootAPIcoupons + query.location.address,
+          coupon_state: sqootAPIcoupons + query.location.region,
+          coupon_title: sqootAPIcoupons + query.coupons.coupon.title 
+        },
           success: sqootCouponSuccessHandler,
           dataType: 'json'
         });
 
-        var couponAmount = jquery.id;
-        for (var i=0; i <couponAmount.length; i++) {
-          var couponCol = buildCouponThumbnail(couponAmount[i]);
-          $("#couponsRow").append(couponCol);
-        }
+buildCouponThumbnail();
+
       }
 
       function buildCouponThumbnail () {
-          var coupon_address = query.location.address;
-           var coupon_state = query.location.region;
-           var coupon_title = coupons.coupon.title;
 
         var colCouponDiv = $("<div>").addClass("col-md-4");
         var thumbnailCouponDiv = $("<div>").addClass("thumbnail");
@@ -110,10 +91,7 @@ $(document).ready(function() {
           );
       }
 
-buildCouponThumbnail();
-buildDealThumbnail();
-sqootDealSuccessHandler();
-sqootCouponSuccessHandler();
+
 
 });
 
