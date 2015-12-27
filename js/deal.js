@@ -4,8 +4,9 @@ $(document).ready(function() {
 
     e.preventDefault();
     
-    var sqootAPIdeals = "http://api.sqoot.com/v2/deals?api_key=fflt53&callback=";
-    var sqootAPIcoupons = "http://api.sqoot.com/v2/coupons?api_key=fflt53&callback=";
+    var sqootAPIdeals = "http://api.sqoot.com/v2/deals?api_key=fflt53&callback=?";
+    var sqootAPIcoupons = "http://api.sqoot.com/v2/coupons?api_key=fflt53&callback=?";
+    var sqootParams = [{}]
 
 
     function sqootDealSuccessHandler() {
@@ -15,14 +16,13 @@ $(document).ready(function() {
         type:'GET',
         url: sqootAPIdeals,
         data: { 
-        deal_address: sqootAPIdeals + query.location.address,
-        deal_state: sqootAPIdeals + query.location.region,
-        deal_title: sqootAPIdeals + deals.deal.title,
-        short_title: sqootAPIdeals + deals.deal.short_title},
+        deal_address: query.location.address,
+        deal_state: query.location.region,
+        deal_title: deals.deal.title,
+        short_title: deals.deal.short_title},
         success: sqootDealSuccessHandler,
         dataType: 'json'
       });
-
 
     }
     
@@ -58,9 +58,9 @@ $(document).ready(function() {
           type:'GET',
           url: sqootAPIcoupons,
           data: { 
-          coupon_address: sqootAPIcoupons + query.location.address,
-          coupon_state: sqootAPIcoupons + query.location.region,
-          coupon_title: sqootAPIcoupons + query.coupons.coupon.title 
+          coupon_address: query.location.address,
+          coupon_state: query.location.region,
+          coupon_title: query.coupons.coupon.title 
         },
           success: sqootCouponSuccessHandler,
           dataType: 'json'
