@@ -3,26 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <title>What's the Deal - yo? 1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link href='https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700|Vollkorn' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="css/deal.css"/>
+  <link href="https://s3.amazonaws.com/codiqa-cdn/codiqa.ext.css" rel="stylesheet">
+  <link href="https://s3.amazonaws.com/codiqa-cdn/mobile/1.4.2/jquery.mobile-1.4.2.css" rel="stylesheet">
 </head>
 
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">What's the Deal- Yo?</a>
-      </div>
+  <div data-role="page" data-control-title="Home" id="page1">
+    <div data-theme="a" data-role="header">
+        <h1>
+            Header
+        </h1>
+        <div class="ui-field-contain" data-controltype="searchinput">
+            <input name="" id="searchinput2" placeholder="" value="" type="search">
+        </div>
+        <div class="ui-field-contain" data-controltype="selectmenu">
+            <label for="selectmenu1">
+                Choose:
+            </label>
+            <select id="selectmenu1" name="" data-mini="true">
+                <option value="option1">
+                    Deals
+                </option>
+                <option value="value">
+                    Coupons
+                </option>
+                <option value="value">
+                    Deals and Coupons
+                </option>
+            </select>
+        </div>
     </div>
+<<<<<<< HEAD
   </nav>
 
 
@@ -49,9 +67,40 @@
 
 
   </div>
+=======
+    <div role="main" class="ui-content">
+        <ul data-role="listview" data-divider-theme="a" data-inset="true">
+            <li data-theme="a">
+                <a href="#" data-transition="slide">
+                    Deal 1
+                </a>
+            </li>
+            <li data-theme="a">
+                <a href="#page1" data-transition="slide">
+                    Deal 2
+                </a>
+            </li>
+            <li data-theme="a">
+                <a href="#page1" data-transition="slide">
+                    Deal 3
+                </a>
+            </li>
+            <li data-theme="a">
+                <a href="#page1" data-transition="slide">
+                    Deal 4
+                </a>
+            </li>
+        </ul>
+        <div id="googlemapsjs1" class="google-map" style="width: 288px; height: 200px; margin-left: auto; margin-right: auto">
+        </div>
+>>>>>>> 486bef65868240c90f8a138dc2682456a996d767
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/deal.js"></script>    
+  <script type="text/javascript" src="js/deal.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="https://s3.amazonaws.com/codiqa-cdn/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+  <script src="https://s3.amazonaws.com/codiqa-cdn/codiqa.ext.js"></script> 
+  <script type="text/javascript" src="js/mobile.js"></script>   
 
 </body>
 </html>
