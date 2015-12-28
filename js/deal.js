@@ -9,8 +9,6 @@ $(document).ready(function() {
 
   var userLocation = $("#userLocation").val().trim();
 
-
-
   $.getJSON("http://api.sqoot.com/v2/deals?api_key=fflt53&callback=?", {
     action: "query",
     list: "search",
@@ -21,10 +19,9 @@ $(document).ready(function() {
 
     $("#dealsRow").empty();
 
+   $.each(data.deals, function buildDealThumbnail (i, item) {
 
-
-   $.each(data.deals, function (i, item) {
-
+    var api_key = "fflt53";
     var categoryName = data.deals[i].deal.category_name;
     var dealTitle = data.deals[i].deal.title;
     var merchantName = data.deals[i].deal.merchant.name;
@@ -48,14 +45,10 @@ $(document).ready(function() {
       .append(" ")
       .append(merchantRegion)
       .appendTo("#thumbnailDealDiv");
-    $("<p>").append(data.query.location)
-      .appendTo("#thumbnailDealDiv");
     $("<img>").attr("src", dealImage)
       .appendTo("#thumbnailDealDiv");
 
-   }); 
-
-
+   });
 
   });   
 
@@ -71,8 +64,9 @@ $.getJSON("http://api.sqoot.com/v2/coupons?api_key=fflt53&callback=?", {
 
     $("#couponsRow").empty();
 
-   $.each(data.coupons, function (i, item) {
+   $.each(data.coupons, function buildCouponThumbnail (i, item) {
 
+    var api_key = "fflt53";
     var categoryName = data.coupons[i].coupon.category_name;
     var couponTitle = data.coupons[i].coupon.title;
     var merchantName = data.coupons[i].coupon.merchants[0].merchant.name;
@@ -80,7 +74,6 @@ $.getJSON("http://api.sqoot.com/v2/coupons?api_key=fflt53&callback=?", {
     var merchantRegion = data.coupons[i].coupon.merchants[0].merchant.region;
     var couponImage = data.coupons[i].coupon.image_url;
 
-    
     $("<div>").attr("id", "colCouponDiv").addClass("row col-md-8 col-md-offset-2")
       .appendTo("body");
     $("<div>").attr("id", "thumbnailCouponDiv").addClass("thumbnail")
@@ -97,18 +90,15 @@ $.getJSON("http://api.sqoot.com/v2/coupons?api_key=fflt53&callback=?", {
       .append(" ")
       .append(merchantRegion)
       .appendTo("#thumbnailCouponDiv");
-    $("<p>").append(data.query.location)
-      .appendTo("#thumbnailCouponDiv");
     $("<img>").attr("src", couponImage)
       .appendTo("#thumbnailCouponDiv");
 
+
    }); 
-
-
 
   }); 
 
- });
-});
+ }); //end button click
+}); //ends document ready
 
 
