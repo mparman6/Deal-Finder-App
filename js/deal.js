@@ -35,7 +35,7 @@ $(document).ready(function() {
     $("<p>").append(data.deals[i].deal.merchant.name)
       .appendTo("#thumbnailDealDiv");
     $("<p>").append(data.deals[i].deal.merchant.locality)
-      .append(", ")
+      .append(" ")
       .append(data.deals[i].deal.merchant.region)
       .appendTo("#thumbnailDealDiv");
     $("<p>").append(data.query.location)
@@ -57,6 +57,7 @@ $.getJSON("http://api.sqoot.com/v2/coupons?api_key=fflt53&callback=?", {
   }, 
 
   function (data) {
+    console.log(data);
 
     $("#couponsRow").empty();
 
@@ -71,11 +72,11 @@ $.getJSON("http://api.sqoot.com/v2/coupons?api_key=fflt53&callback=?", {
       .appendTo("#thumbnailCouponDiv");
     $("<p>").append(data.coupons[i].coupon.title)
       .appendTo("#thumbnailCouponDiv");
-    $("<p>").append(data.coupons[i].coupon.merchants.name)
+    $("<p>").append(data.coupons[i].coupon.merchants[0].merchant.name)
       .appendTo("#thumbnailCouponDiv");
-    $("<p>").append(data.coupons[i].coupon.merchants.locality)
+    $("<p>").append(data.coupons[i].coupon.merchants[0].merchant.locality)
       .append(" ")
-      .append(data.coupons[i].coupon.merchants.region)
+      .append(data.coupons[i].coupon.merchants[0].merchant.region)
       .appendTo("#thumbnailCouponDiv");
     $("<p>").append(data.query.location)
       .appendTo("#thumbnailCouponDiv");
