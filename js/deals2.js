@@ -1,3 +1,5 @@
+
+
 $(document).ready(function() {
 
 
@@ -15,7 +17,6 @@ $(document).ready(function() {
 
   function (data) {
 
-    console.log(data);
     $("#dealsRow").empty();
 
    $.each(data.deals, function buildDealThumbnail (i, item) {
@@ -32,28 +33,7 @@ $(document).ready(function() {
     var thumbnailDealDiv = $("<div>").addClass("thumbnail");
     var dealImage = $("<img>").attr("src", dealImage);
     var captionDiv = $("<div>").addClass("caption");
-    var captionDiv = $("<div>").addClass("caption");
 
-
-
-    $("<div>").attr("id", "colDealDiv").addClass("row col-md-8 col-md-offset-2")
-      .appendTo("body");
-    $("<div>").attr("id", "thumbnailDealDiv").addClass("thumbnail")
-      .appendTo("#colDealDiv");
-    $("<div>").attr("id", "captionDiv").addClass("caption")
-      .appendTo("#thumbnailDealDiv");
-    $("<p>").append(categoryName)
-      .appendTo("#thumbnailDealDiv");
-    $("<p>").append(dealTitle)
-      .appendTo("#thumbnailDealDiv");
-    $("<p>").append(merchantName)
-      .appendTo("#thumbnailDealDiv");
-    $("<p>").append(merchantLocality)
-      .append(" ")
-      .append(merchantRegion)
-      .appendTo("#thumbnailDealDiv");
-    $("<img>").attr("src", dealImageParam)
-      .appendTo("#thumbnailDealDiv");
    });
 
   });   
@@ -105,7 +85,6 @@ $.getJSON("http://api.sqoot.com/v2/coupons?api_key=fflt53&callback=?", {
   }); 
 
  }); //end button click
-
 }); //ends document ready
 
 
