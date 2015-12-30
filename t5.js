@@ -22,7 +22,7 @@ $(document).ready(function(){
       var lat = pos.coords.latitude,
           long = pos.coords.longitude,
           coords = lat + ' ,' + long;
-      $('#google_map').attr('src','https://maps.google.co.uk?q='+
+      $('#google_map').attr('src','https://maps.google.com?q='+
       coords +'&z=60&output=embed');   
       };
 
