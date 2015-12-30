@@ -2,8 +2,7 @@
 
 $(document).ready(function() {
 
-
- $("button").click(function (e) {
+ $(".btn-success").click(function (e) {
 
   e.preventDefault();
 
@@ -20,7 +19,6 @@ $(document).ready(function() {
 
   function (data) {
     console.log(data);
-    $("#dealsRow").empty();
 
     $.each(data.deals, function buildDealThumbnail (i, item) {
 
@@ -36,6 +34,20 @@ $(document).ready(function() {
       var colDealDiv = $("<div>").attr("id", "colDealDiv").addClass("row col-md-8 col-md-offset-2");
       var thumbnailDealDiv = $("<div>").attr("id", "thumbnailDealDiv").addClass("thumbnail");
       var captionDiv = $("<div>").attr("id", "captionDealDiv").addClass("caption");
+      var infoBtn = $("<button>").attr("type", "button").addClass("btn btn-info dealBtn");
+
+      var dealModal = $("<div>").attr({id: "dealModal", tabindex: "-1",role: "dialog"}).addClass("modal fade");
+      var modalDialog = $("<div>").addClass("modal-dialog");
+      var modalContent = $("<div>").addClass("modal-content");
+      var modalHeader = $("<div>").addClass("modal-header");
+      var span = $("<span>").attr("aria-hidden", "true");
+      var closeModalBtn = $("<button>").addClass("close").attr("data-dismiss", "modal").attr("aria-label", "Close").append(span);
+      var modalTitle = $("<h4>").addClass("modal-title");
+      var modalBody = $("<div>").addClass("modal-body");
+      var modalContent = $("<div>").addClass("modal-content"); 
+      var modalFooter = $("<div>").addClass("modal-footer");
+      var closeModalBtnFooter = $("<button>").addClass("btn btn-default").attr("data-dismiss", "modal");
+      var saveModalBtnFooter = $("<button>").addClass("btn btn-primary");
 
 
 
@@ -49,16 +61,39 @@ $(document).ready(function() {
             .append(merchantRegion)
             .append(dealImage)
             )
+          .append(infoBtn)
           )
         );
-    });
 
-});   
 
-  var userLocation = $("#userLocation").val().trim();
+      $(".dealBtn").click (function () {
 
-  var sqootCouponAPI = "http://api.sqoot.com/v2/coupons?api_key=fflt53&callback=?";
-  sqootCouponAPI += userLocation;
+        $("#dealModal").append(modalDialog
+          .append (modalContent
+            .append(modalHeader
+              .append (closeModalBtn
+                )
+              .append(modalBody)
+              .append(modalFooter
+                .append(closeModalBtnFooter)
+                .append(saveModalBtnFooter)
+                )
+              )
+            )
+            ); 
+
+          $("#dealModal").modal("show");
+        });
+
+
+      });
+
+    });   
+
+var userLocation = $("#userLocation").val().trim();
+
+var sqootCouponAPI = "http://api.sqoot.com/v2/coupons?api_key=fflt53&callback=?";
+sqootCouponAPI += userLocation;
 
 
 $.getJSON(sqootCouponAPI, {
@@ -69,8 +104,6 @@ $.getJSON(sqootCouponAPI, {
 
 function (data) {
   console.log(data);
-
-  $("#couponsRow").empty();
 
   $.each(data.coupons, function buildCouponThumbnail (i, item) {
 
@@ -86,6 +119,20 @@ function (data) {
     var colCouponDiv = $("<div>").attr("id", "colCouponDiv").addClass("row col-md-8 col-md-offset-2");
     var thumbnailCouponDiv = $("<div>").attr("id", "thumbnailCouponDiv").addClass("thumbnail");
     var captionDiv = $("<div>").attr("id", "captionCouponDiv").addClass("caption");
+    var infoBtn = $("<button>").attr("type", "button").addClass("btn btn-info couponBtn");
+
+    var couponModal = $("<div>").attr({id: "Modal", tabindex: "-1",role: "dialog"}).addClass("modal fade")
+    var modalDialog = $("<div>").addClass("modal-dialog");
+    var modalContent = $("<div>").addClass("modal-content");
+    var modalHeader = $("<div>").addClass("modal-header");
+    var span = $("<span>").attr("aria-hidden", "true");
+    var closeModalBtn = $("<button>").addClass("close").attr("data-dismiss", "modal").attr("aria-label", "Close").append(span);
+    var modalTitle = $("<h4>").addClass("modal-title");
+    var modalBody = $("<div>").addClass("modal-body");
+    var modalContent = $("<div>").addClass("modal-content"); 
+    var modalFooter = $("<div>").addClass("modal-footer");
+    var closeModalBtnFooter = $("<button>").addClass("btn btn-default").attr("data-dismiss", "modal");
+    var saveModalBtnFooter = $("<button>").addClass("btn btn-primary");
 
     $("#couponsRow").append(colCouponDiv
       .append(thumbnailCouponDiv
@@ -97,8 +144,32 @@ function (data) {
           .append(merchantRegion)
           .append(couponImage)
           )
+        .append(infoBtn)
         )
       );
+
+
+    $(".couponBtn").click (function () {
+
+        $("#couponModal").append(modalDialog
+          .append (modalContent
+            .append(modalHeader
+              .append (closeModalBtn
+                )
+              .append(modalBody)
+              .append(modalFooter
+                .append(closeModalBtnFooter)
+                .append(saveModalBtnFooter)
+                )
+              )
+            )
+            ); 
+
+          $("#couponModal").modal("show");
+        });
+
+
+
   }); 
 
 }); 
