@@ -18,7 +18,7 @@ $(document).ready(function(){
     $('#modal').modal('show');
     });
 
-     var c = function(pos){
+     var curr_pos = function(pos){
       var lat = pos.coords.latitude,
           long = pos.coords.longitude,
           coords = lat + ' ,' + long;
@@ -27,7 +27,7 @@ $(document).ready(function(){
       };
 
       $('#get_location').on('click', function(){
-      navigator.geolocation.getCurrentPosition(c);
+      navigator.geolocation.getCurrentPosition(curr_pos);
       return false;
     });
 
