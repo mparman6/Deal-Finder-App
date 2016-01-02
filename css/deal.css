@@ -3,7 +3,7 @@
   height: 300px; 
   /*frameborder:0px;*/
   border:0;
-  margin-left: 550px;
+  margin-left: 150px;
 }
 
 #locationArrow {
@@ -18,5 +18,5 @@
 }
 
 #get_location{
-  margin-left: 245px;
+  margin-left: 525px;
 }
