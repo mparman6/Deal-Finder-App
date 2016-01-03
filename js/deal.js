@@ -8,11 +8,11 @@ $(document).ready(function() {
 
   var userLocation = $("#userLocation").val().trim();
 
-  var sqootDealAPI = "http://api.sqoot.com/v2/deals?api_key=fflt53&callback=?";
+  var sqootDealAPI = "http://api.sqoot.com/v2/deals?api_key=fflt53&location=?";
   sqootDealAPI += userLocation;
 
   $.getJSON(sqootDealAPI, {
-    action: "query",
+    action: "query.location",
     list: "search",
     format: "json"
   }, 
@@ -29,7 +29,7 @@ $(document).ready(function() {
       var merchantName = $("<p>").append(data.deals[i].deal.merchant.name);
       var merchantLocality = $("<p>").append(data.deals[i].deal.merchant.locality);
       var merchantRegion = $("<p>").append(data.deals[i].deal.merchant.region);
-      var dealImage =$("<img>").attr("src", data.deals[i].deal.image_url).addClass("thumbnailImage");
+      var dealImage =$("<img>").attr("src", data.deals[i].deal.image_url).addClass("img-thumbnail");
 
       var colDealDiv = $("<div>").attr("id", "colDealDiv").addClass("row col-md-8 col-md-offset-2");
       var thumbnailDealDiv = $("<div>").attr("id", "thumbnailDealDiv").addClass("thumbnail");
@@ -92,12 +92,12 @@ $(document).ready(function() {
 
 var userLocation = $("#userLocation").val().trim();
 
-var sqootCouponAPI = "http://api.sqoot.com/v2/coupons?api_key=fflt53&callback=?";
+var sqootCouponAPI = "http://api.sqoot.com/v2/coupons?api_key=fflt53&location=?";
 sqootCouponAPI += userLocation;
 
 
 $.getJSON(sqootCouponAPI, {
-  action: "query",
+  action: "query.location",
   list: "search",
   format: "json"
 }, 
@@ -114,7 +114,7 @@ function (data) {
     var merchantName = $("<p>").append(data.coupons[i].coupon.merchants[0].merchant.name);
     var merchantLocality = $("<p>").append(data.coupons[i].coupon.merchants[0].merchant.locality);
     var merchantRegion = $("<p>").append(data.coupons[i].coupon.merchants[0].merchant.region);
-    var couponImage = $("<img>").attr("src", data.coupons[i].coupon.image_url).addClass("thumbnailImage");
+    var couponImage = $("<img>").attr("src", data.coupons[i].coupon.image_url).addClass("img-thumbnail");
 
     var colCouponDiv = $("<div>").attr("id", "colCouponDiv").addClass("row col-md-8 col-md-offset-2");
     var thumbnailCouponDiv = $("<div>").attr("id", "thumbnailCouponDiv").addClass("thumbnail");
