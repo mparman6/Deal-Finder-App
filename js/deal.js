@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {
 
  $(".btn-success").click(function (e) {
@@ -18,6 +16,7 @@ $(document).ready(function() {
   }, 
 
   function (data) {
+
     console.log(data);
 
     $.each(data.deals, function buildDealThumbnail (i, item) {
@@ -108,6 +107,7 @@ function (data) {
   $.each(data.coupons, function buildCouponThumbnail (i, item) {
 
     var api_key = "fflt53";
+<<<<<<< HEAD
     var couponId = data.coupons[i].coupon.id;
     var categoryName = $("<p>").append(data.coupons[i].coupon.category_name);
     var couponTitle = $("<p>").append(data.coupons[i].coupon.title);
@@ -167,6 +167,51 @@ function (data) {
 
           $("#couponModal").modal("show");
         });
+=======
+    var categoryName = $("<p>").append(data.deals[i].deal.category_name);
+    var dealTitle = $("<p>").append(data.deals[i].deal.title);
+    var merchantName = $("<p>").append(data.deals[i].deal.merchant.name);
+    var merchantLocality = $("<p>").append(data.deals[i].deal.merchant.locality);
+    var merchantRegion = $("<p>").append(data.deals[i].deal.merchant.region);
+    var dealImageParam = data.deals[i].deal.image_url;
+
+    var colDealDiv = $("<div>").attr("id", "colDealDiv").addClass("row col-md-8 col-md-offset-2");
+    var thumbnailDealDiv = $("<div>").addClass("thumbnail");
+    var dealImage = $("<img>").attr("src", dealImage);
+    var captionDiv = $("<div>").addClass("caption");
+    var captionDiv = $("<div>").addClass("caption");
+
+
+
+    $("<div>").attr("id", "colDealDiv").addClass("row col-md-8 col-md-offset-2")
+      .appendTo("body");
+    $("<div>").attr("id", "thumbnailDealDiv").addClass("thumbnail")
+      .appendTo("#colDealDiv");
+    $("<div>").attr("id", "captionDiv").addClass("caption")
+      .appendTo("#thumbnailDealDiv");
+    $("<p>").append(categoryName)
+      .appendTo("#thumbnailDealDiv");
+    $("<p>").append(dealTitle)
+      .appendTo("#thumbnailDealDiv");
+    $("<p>").append(merchantName)
+      .appendTo("#thumbnailDealDiv");
+    $("<p>").append(merchantLocality)
+      .append(" ")
+      .append(merchantRegion)
+      .appendTo("#thumbnailDealDiv");
+    $("<img>").attr("src", dealImageParam)
+      .appendTo("#thumbnailDealDiv");
+   });
+
+  });   
+
+
+$.getJSON("http://api.sqoot.com/v2/coupons?api_key=fflt53&callback=?", {
+    action: "query",
+    list: "search",
+    format: "json"
+  }, 
+>>>>>>> 8f35fe52a9de33e64316392bd984fe3972820f99
 
 
 
@@ -175,6 +220,7 @@ function (data) {
 }); 
 
  }); //end button click
+
 }); //ends document ready
 
 
