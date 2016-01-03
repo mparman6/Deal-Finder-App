@@ -8,30 +8,30 @@ $(document).ready(function() {
 //   $('#modal').modal('show');
 // });
 
- var curr_pos = function(pos){
+var curr_pos = function(pos){
   var lat = pos.coords.latitude,
-      long = pos.coords.longitude,
-      coords = lat + ' ,' + long;
+  long = pos.coords.longitude,
+  coords = lat + ' ,' + long;
   $('#google_map').attr('src','https://maps.google.com?q='+
-  coords +'&z=60&output=embed');   
+    coords +'&z=60&output=embed');   
   console.log(lat);
   console.log(long);
-  };
+};
 
-  $('#get_location').on('click', function(){
+$('#get_location').on('click', function(){
   navigator.geolocation.getCurrentPosition(curr_pos);
   return false;
 });
 
 
 $("#userLocation").keyup(function(event){
-    if(event.keyCode == 13){
-        $("#locationBtn").click();
-    }
+  if(event.keyCode == 13){
+    $("#locationBtn").click();
+  }
 });
 
 
- $("#locationBtn").click(function (e) {
+$("#locationBtn").click(function (e) {
 
   $("#dealsRow").empty();
   $("#couponsRow").empty();
@@ -69,42 +69,40 @@ $("#userLocation").keyup(function(event){
       var thumbnailDealDiv = $("<div>").attr("id", "thumbnailDealDiv").addClass("thumbnail");
       var captionDiv = $("<div>").attr("id", "captionDealDiv").addClass("caption");
 
+      var dealIdUrl = "http://api.sqoot.com/v2/deals/"
+      dealIdUrl += dealId[0];
+      dealIdUrl += "?api_key=";
+      dealIdUrl += api_key;
 
 
-      $("#dealsRow").append(colDealDiv
-        .append(thumbnailDealDiv
-          .append(captionDiv
-            .append(categoryName)
-            .append(dealTitle)
-            .append(merchantName)
-            .append(merchantLocality)
-            .append(merchantRegion)
-            .append(dealImage)
-            )
-          )
-        );
+$(".thumbnail").click(function (data) {
+$.getJSON(dealIdUrl).success(function(data) {
+   $('#myModal, div').replaceWith(data.deals);
+   $('#myModal').modal("show");
+   return false;
+});
+});
 
-    (function($) {
-    var infoModal = $('#myModal');
-    $('.thumbnail').on('click', function(){
-        $.ajax({ 
-          type: "GET", 
-          url: 'http://api.sqoot.com/v2/deals/'+$(this).data('deals[i].deal.id'),
-          dataType: 'json',
-          success: function(data){ 
-            htmlData = '<ul><li>title: '+data.deals[i].deal.category_name+'</li><li>age: '+data.deals[i].deal.title+'</li></ul>';
-            infoModal.find('.modal-body').html(htmlData);
-            modal.modal('show');
-          }
-        });
 
-        return false;
-    });
-})(jQuery);
 
-      });
+$("#dealsRow").append(colDealDiv
+  .append(thumbnailDealDiv
+    .append(captionDiv
+      .append(categoryName)
+      .append(dealTitle)
+      .append(merchantName)
+      .append(merchantLocality)
+      .append(merchantRegion)
+      .append(dealImage)
+      )
+    )
+  );
 
-    });   
+
+
+});
+
+});   
 
 var userLocation = $("#userLocation").val().trim();
 
@@ -137,6 +135,8 @@ function (data) {
     var captionDiv = $("<div>").attr("id", "captionCouponDiv").addClass("caption");
 
 
+
+
     $("#couponsRow").append(colCouponDiv
       .append(thumbnailCouponDiv
         .append(captionDiv
@@ -151,9 +151,9 @@ function (data) {
       );
 
 
-   }); 
-
   }); 
+
+}); 
 
  }); //end button click
 
