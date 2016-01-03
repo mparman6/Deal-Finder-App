@@ -1,6 +1,28 @@
 $(document).ready(function() {
 
- $(".btn-success").click(function (e) {
+
+// $('#blue').on("click", function(){
+//   $('#modal').modal('show');
+// });
+
+ var curr_pos = function(pos){
+  var lat = pos.coords.latitude,
+      long = pos.coords.longitude,
+      coords = lat + ' ,' + long;
+  $('#google_map').attr('src','https://maps.google.com?q='+
+  coords +'&z=60&output=embed');   
+  console.log(lat);
+  console.log(long);
+  };
+
+  $('#get_location').on('click', function(){
+  navigator.geolocation.getCurrentPosition(curr_pos);
+  return false;
+});
+
+
+
+ $("button").click(function (e) {
 
   e.preventDefault();
 
@@ -16,6 +38,7 @@ $(document).ready(function() {
   }, 
 
   function (data) {
+
 
     console.log(data);
 
@@ -167,12 +190,13 @@ function (data) {
           $("#couponModal").modal("show");
         });
 
-  }); 
 
-}); 
+
+
+   }); 
+
+  }); 
 
  }); //end button click
 
 }); //ends document ready
-
-
