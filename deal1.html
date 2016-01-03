@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Yo Deal</title>
+  <title>Your Local Deals</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -18,14 +18,11 @@
   <div data-role="page" data-control-title="Home" id="page1">
     <div data-theme="a" data-role="header">
         <h1>
-           Yo Deal?
+           Deal Finder
         </h1>
-        <div class="ui-field-contain" data-controltype="searchinput">
-            <input name="" id="searchinput2" placeholder="" value="" type="search">
-        </div>
         <div class="ui-field-contain" data-controltype="selectmenu">
             <label for="selectmenu1">
-                Choose:
+                Filter:
             </label>
             <select id="selectmenu1" name="" data-mini="true">
                 <option value="option1">
@@ -40,22 +37,44 @@
             </select>
         </div>
     </div>
-
   </nav>
-
+  <div>
+    <p class="center-block">WHERE ARE YOU?</p>
+  </div>
 
   <div class="container">
     <div class="row">
       <div class="col-xs-6 col-xs-offset-3">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Enter your Zipcode (eg. 07305)">
+          <input id="userLocation" type="text" class="form-control" placeholder="Enter your Zipcode" onsubmit="return search()">
           <span class="input-group-btn">
-            <button class="btn btn-default" type="button"><img id="locationArrow" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Arrow_Blue_Up_001.svg/1024px-Arrow_Blue_Up_001.svg.png"></button>
+            <button class="btn btn-success" type="submit" id="locationBtn"><img id="locationArrow" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Arrow_Blue_Up_001.svg/1024px-Arrow_Blue_Up_001.svg.png"></button>
           </span>
         </div><!-- /input-group -->
       </div><!-- /.col-xs-6 -->
     </div>
   </div>
+
+
+
+<div class="col-md-12" id="couponsRow"></div>
+
+
+<div class="col-md-12" id="dealsRow"></div>
+
+  <div class="Holder">
+    <div class="Element">
+      <input name="get_location" type="submit" class="button" id="get_location"
+      value="Get My Location">
+    </div>
+    <div class="Element">
+      <div id="map">
+        <iframe id="google_map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3032.828004793067!2d-74.44292494932915!3d40.52329255697467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c3c7978a86f6ff%3A0xef8d9fb92554d0e5!2sRutgers+Business+School!5e0!3m2!1sen!2sus!4v1451491746431" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+
 
     <!-- footer -->
     <footer>
@@ -66,40 +85,15 @@
     </footer>
 
 
-  </div>
-    <div role="main" class="ui-content">
-        <ul data-role="listview" data-divider-theme="a" data-inset="true">
-            <li data-theme="a">
-                <a href="#" data-transition="slide">
-                    Deal 1
-                </a>
-            </li>
-            <li data-theme="a">
-                <a href="#page1" data-transition="slide">
-                    Deal 2
-                </a>
-            </li>
-            <li data-theme="a">
-                <a href="#page1" data-transition="slide">
-                    Deal 3
-                </a>
-            </li>
-            <li data-theme="a">
-                <a href="#page1" data-transition="slide">
-                    Deal 4
-                </a>
-            </li>
-        </ul>
-        <div id="googlemapsjs1" class="google-map" style="width: 288px; height: 200px; margin-left: auto; margin-right: auto">
-        </div>
+  
+       
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/deal.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-  <script src="https://s3.amazonaws.com/codiqa-cdn/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-  <script src="https://s3.amazonaws.com/codiqa-cdn/codiqa.ext.js"></script> 
   <script type="text/javascript" src="js/mobile.js"></script>   
 
 </body>
+</html>
 </html>
