@@ -22,8 +22,14 @@ $(document).ready(function() {
 });
 
 
+$("#userLocation").keyup(function(event){
+    if(event.keyCode == 13){
+        $("#locationBtn").click();
+    }
+});
 
- $("button").click(function (e) {
+
+ $("#locationBtn").click(function (e) {
 
   e.preventDefault();
 
