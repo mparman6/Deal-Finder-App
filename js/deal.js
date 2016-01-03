@@ -2,6 +2,8 @@
 $(document).ready(function() {
 
 
+
+
 // $('#blue').on("click", function(){
 //   $('#modal').modal('show');
 // });
@@ -30,6 +32,9 @@ $("#userLocation").keyup(function(event){
 
 
  $("#locationBtn").click(function (e) {
+
+  $("#dealsRow").empty();
+  $("#couponsRow").empty();
 
   e.preventDefault();
 
@@ -63,20 +68,6 @@ $("#userLocation").keyup(function(event){
       var colDealDiv = $("<div>").attr("id", "colDealDiv").addClass("row col-md-8 col-md-offset-2");
       var thumbnailDealDiv = $("<div>").attr("id", "thumbnailDealDiv").addClass("thumbnail");
       var captionDiv = $("<div>").attr("id", "captionDealDiv").addClass("caption");
-      var infoBtn = $("<button>").attr("type", "button").addClass("btn btn-info dealBtn");
-
-      var dealModal = $("<div>").attr({id: "dealModal", tabindex: "-1",role: "dialog"}).addClass("modal fade");
-      var modalDialog = $("<div>").addClass("modal-dialog");
-      var modalContent = $("<div>").addClass("modal-content");
-      var modalHeader = $("<div>").addClass("modal-header");
-      var span = $("<span>").attr("aria-hidden", "true");
-      var closeModalBtn = $("<button>").addClass("close").attr("data-dismiss", "modal").attr("aria-label", "Close").append(span);
-      var modalTitle = $("<h4>").addClass("modal-title");
-      var modalBody = $("<div>").addClass("modal-body");
-      var modalContent = $("<div>").addClass("modal-content"); 
-      var modalFooter = $("<div>").addClass("modal-footer");
-      var closeModalBtnFooter = $("<button>").addClass("btn btn-default").attr("data-dismiss", "modal");
-      var saveModalBtnFooter = $("<button>").addClass("btn btn-primary");
 
 
 
@@ -90,30 +81,26 @@ $("#userLocation").keyup(function(event){
             .append(merchantRegion)
             .append(dealImage)
             )
-          .append(infoBtn)
           )
         );
 
-
-      $(".dealBtn").click (function () {
-
-        $("#dealModal").append(modalDialog
-          .append (modalContent
-            .append(modalHeader
-              .append (closeModalBtn
-                )
-              .append(modalBody)
-              .append(modalFooter
-                .append(closeModalBtnFooter)
-                .append(saveModalBtnFooter)
-                )
-              )
-            )
-            ); 
-
-          $("#dealModal").modal("show");
+    (function($) {
+    var infoModal = $('#myModal');
+    $('.thumbnail').on('click', function(){
+        $.ajax({ 
+          type: "GET", 
+          url: 'http://api.sqoot.com/v2/deals/'+$(this).data('deals[i].deal.id'),
+          dataType: 'json',
+          success: function(data){ 
+            htmlData = '<ul><li>title: '+data.deals[i].deal.category_name+'</li><li>age: '+data.deals[i].deal.title+'</li></ul>';
+            infoModal.find('.modal-body').html(htmlData);
+            modal.modal('show');
+          }
         });
 
+        return false;
+    });
+})(jQuery);
 
       });
 
@@ -148,20 +135,7 @@ function (data) {
     var colCouponDiv = $("<div>").attr("id", "colCouponDiv").addClass("row col-md-8 col-md-offset-2");
     var thumbnailCouponDiv = $("<div>").attr("id", "thumbnailCouponDiv").addClass("thumbnail");
     var captionDiv = $("<div>").attr("id", "captionCouponDiv").addClass("caption");
-    var infoBtn = $("<button>").attr("type", "button").addClass("btn btn-info couponBtn");
 
-    var couponModal = $("<div>").attr({id: "Modal", tabindex: "-1",role: "dialog"}).addClass("modal fade")
-    var modalDialog = $("<div>").addClass("modal-dialog");
-    var modalContent = $("<div>").addClass("modal-content");
-    var modalHeader = $("<div>").addClass("modal-header");
-    var span = $("<span>").attr("aria-hidden", "true");
-    var closeModalBtn = $("<button>").addClass("close").attr("data-dismiss", "modal").attr("aria-label", "Close").append(span);
-    var modalTitle = $("<h4>").addClass("modal-title");
-    var modalBody = $("<div>").addClass("modal-body");
-    var modalContent = $("<div>").addClass("modal-content"); 
-    var modalFooter = $("<div>").addClass("modal-footer");
-    var closeModalBtnFooter = $("<button>").addClass("btn btn-default").attr("data-dismiss", "modal");
-    var saveModalBtnFooter = $("<button>").addClass("btn btn-primary");
 
     $("#couponsRow").append(colCouponDiv
       .append(thumbnailCouponDiv
@@ -173,31 +147,8 @@ function (data) {
           .append(merchantRegion)
           .append(couponImage)
           )
-        .append(infoBtn)
         )
       );
-
-
-    $(".couponBtn").click (function () {
-
-        $("#couponModal").append(modalDialog
-          .append (modalContent
-            .append(modalHeader
-              .append (closeModalBtn
-                )
-              .append(modalBody)
-              .append(modalFooter
-                .append(closeModalBtnFooter)
-                .append(saveModalBtnFooter)
-                )
-              )
-            )
-            ); 
-
-          $("#couponModal").modal("show");
-        });
-
-
 
 
    }); 
