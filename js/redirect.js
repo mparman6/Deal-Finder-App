@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
 
   var mobile_domain ="immense-forest-3648.bmobilized.com";
 // Set to false to not redirect on iPad.
