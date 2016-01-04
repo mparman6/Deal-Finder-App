@@ -1,8 +1,4 @@
-
 $(document).ready(function() {
-
-
-
 
 // $('#blue').on("click", function(){
 //   $('#modal').modal('show');
