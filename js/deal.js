@@ -26,8 +26,9 @@ $("#userLocation").keyup(function(event){
   }
 });
 
-$(document).on("click", ".panel .btn-info", function() {
-  $(this).closest('.panel-body').next(".panel-footer").collapse("toggle");
+
+$(".panel").on("click", ".btn-info", function() {
+  $(this).closest('.panel-heading').next(".panel-footer").collapse("toggle");
 });
 
 
@@ -40,7 +41,7 @@ $("#locationBtn").click(function (e) {
 
   var userLocation = $("#userLocation").val().trim();
 
-  var sqootDealAPI = "https://api.sqoot.com/v2/deals?api_key=demo&location=?";
+  var sqootDealAPI = "https://api.sqoot.com/v2/deals?api_key=fflt53&location=?";
   sqootDealAPI += userLocation;
 
   $.getJSON(sqootDealAPI, {
@@ -56,24 +57,25 @@ $("#locationBtn").click(function (e) {
     $.each(data.deals, function buildDealThumbnail (i, item) {
 
       var dealId = data.deals[i].deal.id;
-      var categoryName = $("<p>").append(data.deals[i].deal.category_name);
-      var dealTitle = $("<p>").append(data.deals[i].deal.title);
-      var merchantName = $("<p>").append(data.deals[i].deal.merchant.name);
-      var merchantLocality = $("<p>").append(data.deals[i].deal.merchant.locality);
-      var merchantRegion = $("<p>").append(data.deals[i].deal.merchant.region);
+      var categoryName = $("<h3>").append(data.deals[i].deal.category_name);
+      var dealTitle = $("<p>").html("Title: ").append(data.deals[i].deal.title);
+      var merchantName = $("<p>").html("Supplier: ").append(data.deals[i].deal.merchant.name);
+      var merchantLocality = $("<p>").html("State: ").append(data.deals[i].deal.merchant.locality);
+      var merchantRegion = $("<p>").html("City: ").append(data.deals[i].deal.merchant.region);
       var dealImage =$("<img>").attr("src", data.deals[i].deal.image_url).addClass("img-thumbnail");
 
-      var dealExpire = $("<p>").append(data.deals[i].deal.expires_at);
-      var dealPrice = $("<p>").append(data.deals[i].deal.price);
-      var dealDescription = $("<p>").append(data.deals[i].deal.short_title);
-      var dealUrl = $("<p>").append(data.deals[i].deal.url);
+      var dealExpire = $("<p>").html("Deal expiration: ").append(data.deals[i].deal.expires_at);
+      var dealPrice = $("<p>").html("Price: $").append(data.deals[i].deal.price);
+      var dealDescription = $("<p>").html("Description: ").append(data.deals[i].deal.short_title);
+      var dealUrl = $("<a>").attr("href", data.deals[i].deal.untracked_url).html("check it out");
 
       var colDiv = $("<div>").attr("id", "colDealDiv").addClass("row col-md-8 col-md-offset-2 colDiv");
       var dealPanel = $("<div>").addClass("panel panel-default");
       var dealPanelHead = $("<div>").addClass("panel-heading");
       var dealPanelBody = $("<div>").addClass("panel-body");
-      var dealButtonInfo = $("<button>").addClass("btn btn-info").attr("data-toggle", "collapse").html("More Info");
-      var dealPanelFooter = $("<div>").addClass("panel-footer collapse");
+      var dealButtonInfo = $("<button>").addClass("btn btn-info");
+
+      var dealPanelFooter = $("<div>").addClass("panel-footer");
       var thumbnailDealDiv = $("<div>").attr("id", "thumbnailDealDiv").addClass("thumbnail");
       var captionDiv = $("<div>").attr("id", "captionDealDiv").addClass("caption");
 
@@ -92,15 +94,17 @@ $("#locationBtn").click(function (e) {
                 .append(merchantLocality)
                 .append(merchantRegion)
                 .append(dealImage)
-                .append(dealButtonInfo)
-                )
+
+                ).append(dealButtonInfo
+                  .append(dealUrl)
+                  )
               )
             )
           .append(dealPanelFooter
             .append(dealDescription)
             .append(dealPrice)
             .append(dealExpire)
-            .append(dealUrl)
+            
             )
           )
         );
@@ -110,7 +114,7 @@ $("#locationBtn").click(function (e) {
 
 var userLocation = $("#userLocation").val().trim();
 
-var sqootCouponAPI = "https://api.sqoot.com/v2/coupons?api_key=demo&location=?";
+var sqootCouponAPI = "https://api.sqoot.com/v2/coupons?api_key=fflt53&location=?";
 sqootCouponAPI += userLocation;
 
 
@@ -126,17 +130,17 @@ function (data) {
   $.each(data.coupons, function buildCouponThumbnail (i, item) {
 
     var couponId = data.coupons[i].coupon.id;
-    var categoryName = $("<p>").append(data.coupons[i].coupon.category_name);
-    var couponTitle = $("<p>").append(data.coupons[i].coupon.title);
-    var merchantName = $("<p>").append(data.coupons[i].coupon.merchants[0].merchant.name);
-    var merchantLocality = $("<p>").append(data.coupons[i].coupon.merchants[0].merchant.locality);
-    var merchantRegion = $("<p>").append(data.coupons[i].coupon.merchants[0].merchant.region);
+    var categoryName = $("<h3>").append(data.coupons[i].coupon.category_name);
+    var couponTitle = $("<p>").html("Title: ").append(data.coupons[i].coupon.title);
+    var merchantName = $("<p>").html("Supplier: ").append(data.coupons[i].coupon.merchants[0].merchant.name);
+    var merchantLocality = $("<p>").html("State: ").append(data.coupons[i].coupon.merchants[0].merchant.locality);
+    var merchantRegion = $("<p>").html("City: ").append(data.coupons[i].coupon.merchants[0].merchant.region);
     var couponImage = $("<img>").attr("src", data.coupons[i].coupon.image_url).addClass("img-thumbnail");
 
-    var couponExpire = $("<p>").append(data.coupons[i].coupon.expires_at);
-    var couponPrice = $("<p>").append(data.coupons[i].coupon.title);
-    var couponDescription = $("<p>").append(data.coupons[i].coupon.description);
-    var couponUrl = $("<p>").append(data.coupons[i].coupon.url);
+    var couponExpire = $("<p>").html("Coupon expiration: ").append(data.coupons[i].coupon.expires_at);
+    var couponPrice = $("<p>").html("Price: $").append(data.coupons[i].coupon.title);
+    var couponDescription = $("<p>").html("Description: ").append(data.coupons[i].coupon.description);
+    var couponUrl = $("<a>").attr("href", data.coupons[i].coupon.untracked_url).html("check it out");
 
     var colDiv = $("<div>").attr("id", "colCouponDiv").addClass("row col-md-8 col-md-offset-2 colDiv");
     var thumbnailCouponDiv = $("<div>").attr("id", "thumbnailCouponDiv").addClass("thumbnail");
@@ -144,8 +148,8 @@ function (data) {
     var couponPanel = $("<div>").addClass("panel panel-default");
     var couponPanelHead = $("<div>").addClass("panel-heading");
     var couponPanelBody = $("<div>").addClass("panel-body");
-    var couponButtonInfo = $("<button>").addClass("btn btn-info infoBtn").attr("data-toggle", "collapse").html("More Info");
-    var couponPanelFooter = $("<div>").addClass("panel-footer collapse");
+    var couponButtonInfo = $("<button>").addClass("btn btn-info infoBtn");
+    var couponPanelFooter = $("<div>").addClass("panel-footer");
 
 
 
@@ -164,15 +168,17 @@ function (data) {
               .append(merchantLocality)
               .append(merchantRegion)
               .append(couponImage)
-              .append(couponButtonInfo)
-              )
+              
+              ).append(couponButtonInfo
+                .append(couponUrl)
+                )
             )
           )
         .append(couponPanelFooter
           .append(couponDescription)
           .append(couponPrice)
           .append(couponExpire)
-          .append(couponUrl)
+          
           )
         )
       );
