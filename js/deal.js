@@ -67,7 +67,7 @@ $("#locationBtn").click(function (e) {
       var dealExpire = $("<p>").html("Deal expiration: ").append(data.deals[i].deal.expires_at);
       var dealPrice = $("<p>").html("Price: $").append(data.deals[i].deal.price);
       var dealDescription = $("<p>").html("Description: ").append(data.deals[i].deal.short_title);
-      var dealUrl = $("<a>").attr("href", data.deals[i].deal.untracked_url).html("check it out");
+      var dealUrl = $("<a>").attr("href", data.deals[i].deal.untracked_url).html("check it out at " + data.deals[i].deal.provider_name);
 
       var colDiv = $("<div>").attr("id", "colDealDiv").addClass("row col-md-8 col-md-offset-2 colDiv");
       var dealPanel = $("<div>").addClass("panel panel-default");
@@ -140,7 +140,7 @@ function (data) {
     var couponExpire = $("<p>").html("Coupon expiration: ").append(data.coupons[i].coupon.expires_at);
     var couponPrice = $("<p>").html("Price: $").append(data.coupons[i].coupon.title);
     var couponDescription = $("<p>").html("Description: ").append(data.coupons[i].coupon.description);
-    var couponUrl = $("<a>").attr("href", data.coupons[i].coupon.untracked_url).html("check it out");
+    var couponUrl = $("<a>").attr("href", data.coupons[i].coupon.untracked_url).html("check it out at " + data.coupons[i].coupon.provider_name);
 
     var colDiv = $("<div>").attr("id", "colCouponDiv").addClass("row col-md-8 col-md-offset-2 colDiv");
     var thumbnailCouponDiv = $("<div>").attr("id", "thumbnailCouponDiv").addClass("thumbnail");
