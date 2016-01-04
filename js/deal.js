@@ -40,7 +40,7 @@ $("#locationBtn").click(function (e) {
 
   var userLocation = $("#userLocation").val().trim();
 
-  var sqootDealAPI = "https://api.sqoot.com/v2/deals?api_key=fflt53&location=?";
+  var sqootDealAPI = "https://api.sqoot.com/v2/deals?api_key=demo&location=?";
   sqootDealAPI += userLocation;
 
   $.getJSON(sqootDealAPI, {
@@ -110,7 +110,7 @@ $("#locationBtn").click(function (e) {
 
 var userLocation = $("#userLocation").val().trim();
 
-var sqootCouponAPI = "https://api.sqoot.com/v2/coupons?api_key=fflt53&location=?";
+var sqootCouponAPI = "https://api.sqoot.com/v2/coupons?api_key=demo&location=?";
 sqootCouponAPI += userLocation;
 
 
