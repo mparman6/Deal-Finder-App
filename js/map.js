@@ -9,7 +9,7 @@ $(document).ready(function() {
 
   var mapOptions = {
     center: new google.maps.LatLng(location.coords.latitude, location.coords.longitude),
-    zoom: 6,
+    zoom: 10,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 
