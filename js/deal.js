@@ -73,7 +73,7 @@ $("#locationBtn").click(function (e) {
       var dealPanel = $("<div>").addClass("panel panel-default");
       var dealPanelHead = $("<div>").addClass("panel-heading");
       var dealPanelBody = $("<div>").addClass("panel-body");
-      var dealButtonInfo = $("<button>").addClass("btn btn-info");
+      var dealButtonInfo = $("<button>").addClass("btn btn-info btn-block");
 
       var dealPanelFooter = $("<div>").addClass("panel-footer");
       var thumbnailDealDiv = $("<div>").attr("id", "thumbnailDealDiv").addClass("thumbnail");
@@ -148,7 +148,7 @@ function (data) {
     var couponPanel = $("<div>").addClass("panel panel-default");
     var couponPanelHead = $("<div>").addClass("panel-heading");
     var couponPanelBody = $("<div>").addClass("panel-body");
-    var couponButtonInfo = $("<button>").addClass("btn btn-info infoBtn");
+    var couponButtonInfo = $("<button>").addClass("btn btn-info btn-block");
     var couponPanelFooter = $("<div>").addClass("panel-footer");
 
 
