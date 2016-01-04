@@ -16,31 +16,36 @@
 </head>
 
 <body>
-  <div data-role="page" data-control-title="Home" id="page1">
-    <div data-theme="a" data-role="header">
-        <h1>
-           Deal Finder
-        </h1>
-        <div class="ui-field-contain" data-controltype="selectmenu">
-            <label for="selectmenu1">
-                Filter:
-            </label>
-            <select id="selectmenu1" name="" data-mini="true">
-                <option value="option1">
-                    Deals
-                </option>
-                <option value="value">
-                    Coupons
-                </option>
-                <option value="value">
-                    Deals and Coupons
-                </option>
-            </select>
-        </div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Find Local Deals</a>
     </div>
-  </nav>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Filter<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Deals</a></li>
+            <li><a href="#">Coupons</a></li>
+            <li><a href="#">Deals and Coupons</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
   <div>
-    <p class="center-block">WHERE ARE YOU?</p>
+    <p id="align" class="center-block">WHERE ARE YOU?</p>
   </div>
 
   <div class="container">
